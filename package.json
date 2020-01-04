@@ -1,0 +1,98 @@
+{
+  "name": "vue-hackernews-2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "npm run build && npm-run-all start serve:client",
+    "serve:client": "vue-cli-service serve",
+    "build": "npm run build:server -- --silent && npm run build:client -- --no-clean --silent",
+    "build:client": "vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build",
+    "start": "cross-env NODE_ENV=production node scripts/start",
+    "lint": "vue-cli-service lint",
+    "test": "npm run lint && npm run test:unit && npm run test:integration && npm runtest:e2e",
+    "test:integration": "npm run build && jest --testEnvironment node --forceExit server.spec.js",
+    "test:unit": "jest src --no-cache",
+    "test:unit:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand",
+    "test:e2e": "node e2e/runner.js"
+  },
+  "dependencies": {
+    "@vue/server-test-utils": "^1.0.0-beta.25",
+    "docker": "^1.0.0",
+    "firebase": "^5.0.4",
+    "supertest": "^3.3.0",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli": "^3.0.0-rc.3",
+    "@vue/cli-plugin-babel": "^3.0.0-rc.3",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.3",
+    "@vue/cli-service": "^3.0.0-rc.3",
+    "@vue/eslint-config-standard": "^3.0.0-beta.16",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.2.0",
+    "chromedriver": "^79.0.0",
+    "cross-env": "^5.2.0",
+    "flush-promises": "^1.0.0",
+    "geckodriver": "^1.19.1",
+    "jest": "^22.4.2",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.merge": "^4.6.1",
+    "nightwatch": "^1.3.2",
+    "npm-run-all": "^4.1.3",
+    "selenium-server": "^3.141.59",
+    "vue-jest": "^2.6.0",
+    "vue-server-renderer": "^2.5.16",
+    "vue-template-compiler": "^2.5.16",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "rules": {
+      "prefer-promise-reject-errors": 0,
+      "no-new": 0
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.vue$": "vue-jest"
+    },
+    "setupFiles": [
+      "./test-setup.js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  }
+}

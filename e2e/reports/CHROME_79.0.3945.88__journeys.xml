@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="1">
+
+  <testsuite name="journeys"
+    errors="1" failures="0" hostname="" id="" package="journeys" skipped="0"
+    tests="1" time="3.584" timestamp="">
+  
+    <testcase name="sanity test" classname="journeys" time="3.584" assertions="0">
+    </testcase>
+  
+
+  
+    <system-err>
+      [0;31m  TypeError [ERR_UNESCAPED_CHARACTERS]: Error while trying to create HTTP request for &#34;/wd/hub/session/2776d73cffd36f9dc4a69cd2d9c2834c/element/[object Object]/displayed&#34;: Request path contains unescaped characters[0m
+[0;90m       at new ClientRequest (_http_client.js:115:13)
+       at Object.request (http.js:42:10)
+       at new Promise (&lt;anonymous&gt;)[0m
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>
